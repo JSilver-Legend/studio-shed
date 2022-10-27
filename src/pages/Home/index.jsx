@@ -4,7 +4,7 @@ import SideBar from '../../components/SideBar';
 
 const Home = () => {
   return (
-    <div className='flex' >
+    <div className='flex justify-start' >
       <SideBar />
       <Builder />
     </div>
