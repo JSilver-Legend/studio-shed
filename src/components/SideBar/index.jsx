@@ -35,41 +35,49 @@ const ModelCardInfo = [
         ],
         size: [
             {
+                value: "6-6",
                 width: "6",
                 height: "6",
                 type: "*"
             },
             {
+                value: "6-8",
                 width: "6",
                 height: "8",
                 type: "*"
             },
             {
+                value: "8-8",
                 width: "8",
                 height: "8",
                 type: "*"
             },
             {
+                value: "8-10",
                 width: "8",
                 height: "10",
                 type: "*"
             },
             {
+                value: "8-12",
                 width: "8",
                 height: "12",
                 type: "*"
             },
             {
+                value: "8-14",
                 width: "8",
                 height: "14",
                 type: "*"
             },
             {
+                value: "10-10",
                 width: "10",
                 height: "10",
                 type: "*"
             },
             {
+                value: "10-12",
                 width: "10",
                 height: "12",
                 type: "*"
@@ -90,26 +98,31 @@ const ModelCardInfo = [
         ],
         size: [
             {
+                value: "8-8",
                 width: "8",
                 height: "8",
                 type: "*"
             },
             {
+                value: "8-12",
                 width: "8",
                 height: "12",
                 type: "*"
             },
             {
+                value: "8-16",
                 width: "8",
                 height: "16",
                 type: "*"
             },
             {
+                value: "10-12",
                 width: "10",
                 height: "12",
                 type: "*"
             },
             {
+                value: "10-20",
                 width: "10",
                 height: "20",
                 type: "*"
@@ -134,17 +147,16 @@ const ModelCardInfo = [
         ],
         size: [
             {
-                value: 150,
+                value: "150",
                 type: "sq.ft"
             }
         ]
     }
 ]
 
-
 const SideBar = () => {
 
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <>
@@ -173,28 +185,28 @@ const SideBar = () => {
                         ))
                     }
                 </div>
-                <div className='p-1 flex flex-1 text-lg px-4 py-3 rounded-lg text-white hover:bg-gray-700 hover:cursor-pointer' >
+                {/* <div className='p-1 flex flex-1 text-lg px-4 py-3 rounded-lg text-white hover:bg-gray-700 hover:cursor-pointer' >
                     <div className='w-8 h-8 flex items-center justify-center border-2 border-yellow-600 rounded-full'>
                         <MdOutlineHouse color='white' width={10} height={10} />
                     </div>
                     <div className='flex-1 flex items-center ml-5 justify-start' >
                         Sign In
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
         {  
-        ( selectedCategory !== '' ) &&
-            <div className='bg-white flex-shrink-0 w-96 pb-2 flex-col '>
+        ( selectedCategory === 'Model' ) &&
+            <div className='bg-white flex flex-shrink-0 w-98 h-screen flex-col'>
                 <div className='flex justify-between px-7 h-20 border-b border-blue-gray-200' >
                     <div className='text-lg font-medium text-blue-gray-900 flex justify-center items-center' >
                         { selectedCategory }
                     </div>
-                    <div className='hover:cursor-pointer hover:text-gray-400 flex justify-center items-center '>
+                    <div onClick={()=>{ setSelectedCategory(null) }}  className='hover:cursor-pointer hover:text-gray-400 flex justify-center items-center '>
                         <AiOutlineClose />
                     </div>
                 </div>
-                <div className='flex-col p-4 bg-slate-50'>
+                <div className='flex-1 flex-col p-4 bg-slate-50 overflow-y-auto'>
                     {
                         ModelCardInfo.map((item, index)=>(
                             <ModelCard key={index} items={item}/>
