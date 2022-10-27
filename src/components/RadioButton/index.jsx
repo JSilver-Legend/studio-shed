@@ -16,7 +16,7 @@ const RadioButton = ({items, setValue, defaultValue}) => {
                 <div key={index} onClick={()=>{
                   setStateValue(item.value);
                   setSelectedOption(item.value)
-                }} className={classnames('text-gray-700 p-4 my-1 rounded-lg font-semibold border-gray-600 bg-gray-100 hover:bg-gray-600 hover:cursor-pointer hover:text-gray-100', {'bg-gray-400 text-gray-100': selectedOption === item.value})}>
+                }} className={classnames('text-gray-700 p-4 my-1 rounded-lg font-semibold border-gray-600 bg-gray-100 hover:bg-gray-400 hover:cursor-pointer hover:text-gray-100', {'bg-gray-600 text-gray-100': selectedOption === item.value})}>
                     {item.label}
                 </div>
             ))
