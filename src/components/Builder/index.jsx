@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 
 const Builder = () => {
   return (
-    <Canvas className='flex flex-1 h-screen bg-slate-400'>
+    <Canvas className='flex flex-1 min-h-screen bg-slate-400' >
 
     </Canvas>
   )

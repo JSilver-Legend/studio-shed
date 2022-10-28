@@ -6,6 +6,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import ModelCard from '../ModelCard';
 import RadioButton from '../RadioButton';
 import CheckboxButton from '../CheckboxButton';
+import ColorCard from '../ColorCard';
 
 const buttonInfo = [
     {
@@ -339,10 +340,182 @@ const FlooringAndIneriorInfo = [
     }
 ];
 
+const ExteriorIngo = [
+    {
+        type: 'Architectural Shingles',
+        data: [
+            {
+                name: 'Aged Cedar',
+                url: '/assets/png/Aged_Cedar.png'
+            },
+            {
+                name: 'Amber',
+                url: '/assets/png/Amber.png'
+            },
+            {
+                name: 'Brownwood',
+                url: '/assets/png/Brownwood.png'
+            },
+            {
+                name: 'Desert Tan',
+                url: '/assets/png/Desert_Tan.png'
+            },
+            {
+                name: 'Driftwood',
+                url: '/assets/png/Driftwood.png'
+            },
+            {
+                name: 'Gray',
+                url: '/assets/png/Gray.png'
+            },
+            {
+                name: 'Onyx Black',
+                url: '/assets/png/Onyx_Black.png'
+            },
+            {
+                name: 'Sand Castle',
+                url: '/assets/png/Sand_Castle.png'
+            },
+            {
+                name: 'Shasta White',
+                url: '/assets/png/Shasta_White.png'
+            },
+            {
+                name: 'Sierra Gray',
+                url: '/assets/png/Sierra_Gray.png'
+            },
+            {
+                name: 'Teak',
+                url: '/assets/png/Teak.png'
+            }
+        ]
+    },
+    {
+        type: 'SmartSide',
+        data: [
+            {
+                name: 'No Paint',
+                color: '#ffffff'
+            },
+            {
+                name: 'Alabaster White',
+                color: '#eceae1'
+            },
+            {
+                name: 'Evergreen Fog',
+                color: '#95978b'
+            },
+            {
+                name: 'Urban Bronze',
+                color: '#53504b'
+            },
+            {
+                name: 'Naval',
+                color: '#323d4b'
+            },
+            {
+                name: 'Cavern Clay',
+                color: '#a36e58'
+            },
+            {
+                name: 'Oceanside',
+                color: '#255969'
+            },
+            {
+                name: 'Poised Taupe',
+                color: '#8a7e79'
+            },
+            {
+                name: 'Agreeable Gray',
+                color: '#d0cbc2'
+            },
+            {
+                name: 'Dovetail',
+                color: '#8f8a84'
+            },
+            {
+                name: 'Tricorn Black',
+                color: '#2f2f30'
+            },
+        ]
+    },
+    {
+        type: 'Trim',
+        data: [
+            {
+                name: 'Alabaster White',
+                color: '#eceae1'
+            },
+            {
+                name: 'Evergreen Fog',
+                color: '#95978b'
+            },
+            {
+                name: 'Urban Bronze',
+                color: '#53504b'
+            },
+            {
+                name: 'Naval',
+                color: '#323d4b'
+            },
+            {
+                name: 'Cavern Clay',
+                color: '#a36e58'
+            },
+            {
+                name: 'Oceanside',
+                color: '#255969'
+            },
+            {
+                name: 'Poised Taupe',
+                color: '#8a7e79'
+            },
+            {
+                name: 'Agreeable Gray',
+                color: '#d0cbc2'
+            },
+            {
+                name: 'Dovetail',
+                color: '#8f8a84'
+            },
+            {
+                name: 'Tricorn Black',
+                color: '#2f2f30'
+            },
+        ]
+    },
+    {
+        type: 'Countertop Colors',
+        data: [
+            {
+                name: 'Calacatta Onyx',
+                url: '/assets/png/Calacatta_Onyx.png'
+            },
+            {
+                name: 'Calacatta',
+                url: '/assets/png/Calacatta.png'
+            },
+            {
+                name: 'Concrete Dark',
+                url: '/assets/png/Concrete_Dark.png'
+            },
+            {
+                name: 'Concrete Light',
+                url: '/assets/png/Concrete_Light.png'
+            }
+        ],
+
+    }
+];
+
 const SideBar = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentSelectedModelStyle, setCurrentSelectedModelStyle] = useState('ADU Series');
+  const [architecturalShinglesState, setArchitecturalShinglesState] = useState('Aged Cedar');
+  const [smartSideState, setSmartSideState] = useState('No Paint');
+  const [trimState, setTrimState] = useState('Alabaster White');
+  const [countertopColorsState, setCountertopColorsState] = useState('Calacatta Onyx');
 
   const setCurrnetFlooringOptions = () => {
 
@@ -350,6 +523,22 @@ const SideBar = () => {
 
   const setCurrentInteriorOptions = () => {
     
+  }
+
+  const setArchitecturalShinglesOptions = (value) => {
+    setArchitecturalShinglesState(value);
+  }
+
+  const setSmartSideOptions = (value) => {
+    setSmartSideState(value);
+  }
+
+  const setTrimOptions = (value) => {
+    setTrimState(value);
+  }
+
+  const setCountertopColors = (value) => {
+    setCountertopColorsState(value);
   }
 
   return (
@@ -440,6 +629,32 @@ const SideBar = () => {
                                             </div>
                                         ))
                                     }
+                                </>
+                            }
+                        </>
+                    }
+                    {
+                        selectedCategory === 'Exterior' &&
+                        <>
+                            <div className='border-gray-500 border-b my-3 pb-1 text-base font-bold'>Colors & Modifications</div>
+                            <div>Colors are approximate. We are happy to provide you with an exact color sample, upon request.</div>
+                            <div className='my-3 pb-1 text-gray-500 text-base font-bold'>Architectural Shingles</div>
+                            <ColorCard setValue={setArchitecturalShinglesOptions} type={'texture'} items={ExteriorIngo.find((s)=> s.type === 'Architectural Shingles').data} />
+                            <div className='my-3 pb-1 text-gray-500 text-base font-bold'>SmartSide</div>
+                            <ColorCard setValue={setSmartSideOptions} type={'color'} items={ExteriorIngo.find((s)=> s.type === 'SmartSide').data} />
+                            {
+                                smartSideState !== 'No Paint' &&
+                                <>
+                                    <div className='my-3 pb-1 text-gray-500 text-base font-bold'>Trim</div>
+                                    <ColorCard setValue={setTrimOptions} type={'color'} items={ExteriorIngo.find((s)=> s.type === 'Trim').data} />
+                                </>
+
+                            }
+                            {
+                                currentSelectedModelStyle === 'ADU Series' &&
+                                <>
+                                    <div className='my-3 pb-1 text-gray-500 text-base font-bold'>Countertop Colors</div>
+                                    <ColorCard setValue={setCountertopColors} type={'texture'} items={ExteriorIngo.find((s)=> s.type === 'Countertop Colors').data} />
                                 </>
                             }
                         </>
