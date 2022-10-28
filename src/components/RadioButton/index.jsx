@@ -11,7 +11,7 @@ const RadioButton = ({items, setValue, defaultValue}) => {
 
   return (
     <div className='flex-rows' >
-        {
+        { 
             items.map((item, index)=>(
                 <div key={index} onClick={()=>{
                   setStateValue(item.value);

@@ -4,15 +4,17 @@ import classnames from "classnames";
 import { MdOutlineHouse } from 'react-icons/md';
 import { AiOutlineClose } from 'react-icons/ai';
 import ModelCard from '../ModelCard';
+import RadioButton from '../RadioButton';
+import CheckboxButton from '../CheckboxButton';
 
 const buttonInfo = [
     {
         number: 1,
-        text:"Model"
+        text:"Style"
     },
     {
         number: 2,
-        text:"Interior"
+        text:"Flooring & Interior"
     },
     {
         number: 3,
@@ -152,15 +154,207 @@ const ModelCardInfo = [
             }
         ]
     }
-]
+];
+
+const FlooringAndIneriorInfo = [
+    {
+        style: "Shed Series",
+        flooring: [
+            {
+                type: "Flooring options are not shown visually on the model but are included in the price estimate.",
+                options: [
+                    {
+                        value: '3/4-plywood',
+                        label: '3/4" Plywood'
+                    },
+                    {
+                        value: '1-Plywood',
+                        label: '1" Plywood'
+                    }
+                ]
+            }
+        ],
+        interior: [
+            {
+                type: "Electrical Option",
+                options: {
+                    optionsType: 'optional',
+                    data: [
+                        {
+                            value: 'Electrical',
+                            label: 'Electrical Package'
+                        }
+                    ]
+                }
+            },
+            {
+                type: "",
+                options: {
+                    optionsType: 'radio',
+                    data: [
+                        {
+                            value: 'CAT5e',
+                            label: 'CAT5e Outlet'
+                        }
+                    ]
+                }
+            },
+            {
+                type: "Workbenches",
+                options: {
+                    optionsType: 'radio',
+                    data: [
+                        {
+                            value: 'None',
+                            label: 'None'
+                        },
+                        {
+                            value: 'Workbench',
+                            label: 'Workbench (full wall length)'
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        style: "Studio Series",
+        flooring: [
+            {
+                type: "Flooring options are not shown visually on the model but are included in the price estimate.",
+                options: [
+                    {
+                        value: 'Waterproof-none-diaplay',
+                        label: 'Waterproof Laminate Wood Flooring'
+                    }
+                ]
+            },
+            {
+                type: "Waterproof Laminate Wood Flooring Color Options",
+                options: [
+                    {
+                        value: 'Sunbaked',
+                        label: 'Sunbaked Sand Oak'
+                    },
+                    {
+                        value: 'Vintage',
+                        label: 'Vintage Pewter Oak'
+                    },
+                    {
+                        value: 'Weathered',
+                        label: 'Weathered Grey Wood'
+                    },
+                    {
+                        value: 'Arden',
+                        label: 'Arden Blonde Hickory'
+                    },
+                    {
+                        value: 'Lawrence',
+                        label: 'Lawrence Chestnut'
+                    },
+                    {
+                        value: 'Montage',
+                        label: 'Montage Grey Oak'
+                    }
+                ]
+            }
+        ],
+        interior: [
+            {
+                type: "Electrical Option",
+                options: {
+                    optionsType: 'radio',
+                    data: [
+                        {
+                            value: 'Electrical',
+                            label: 'Electrical Package'
+                        }
+                    ]
+                }
+            },
+            {
+                type: "",
+                options: {
+                    optionsType: 'optional',
+                    data: [
+                        {
+                            value: 'CAT5e',
+                            label: 'CAT5e Outlet'
+                        },
+                        {
+                            value: 'Ductless',
+                            label: 'Ductless Mini Split with Installation'
+                        },
+                        {
+                            value: 'Extra',
+                            label: 'Extra Interior Plug'
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        style: "ADU Series",
+        flooring: [
+            {
+                type: "Flooring options are not shown visually on the model but are included in the price estimate.",
+                options: [
+                    {
+                        value: 'Waterproof-none-diaplay',
+                        label: 'Waterproof Laminate Wood Flooring'
+                    }
+                ]
+            },
+            {
+                type: "Waterproof Laminate Wood Flooring Color Options",
+                options: [
+                    {
+                        value: 'Sunbaked',
+                        label: 'Sunbaked Sand Oak'
+                    },
+                    {
+                        value: 'Vintage',
+                        label: 'Vintage Pewter Oak'
+                    },
+                    {
+                        value: 'Weathered',
+                        label: 'Weathered Grey Wood'
+                    },
+                    {
+                        value: 'Arden',
+                        label: 'Arden Blonde Hickory'
+                    },
+                    {
+                        value: 'Lawrence',
+                        label: 'Lawrence Chestnut'
+                    },
+                    {
+                        value: 'Montage',
+                        label: 'Montage Grey Oak'
+                    }
+                ]
+            }
+        ],
+    }
+];
 
 const SideBar = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [currentSelectedModelStyle, setCurrentSelectedModelStyle] = useState('ADU Series');
+
+  const setCurrnetFlooringOptions = () => {
+
+  }
+
+  const setCurrentInteriorOptions = () => {
+    
+  }
 
   return (
     <>
-        <div className='w-56 flex-shrink-0 h-screen bg-gray-800 pt-5'>
+        <div className='w-60 flex-shrink-0 h-screen bg-gray-800 pt-5'>
             <div className='flex flex-col items-center border-solid border-b border-gray-600 text-white'>
                 <img alt='ss-white-logo' src='./assets/png/ss-white-logo.png' />
                 <div className='mb-3'>
@@ -178,7 +372,7 @@ const SideBar = () => {
                                 <div className={classnames('w-8 h-8 flex items-center font-bold justify-center border-2 border-yellow-600 rounded-full', {'bg-yellow-600': selectedCategory === item.text})}>
                                     {item.number}
                                 </div>
-                                <div className='flex-1 flex items-center ml-5 justify-start'>
+                                <div className='flex-1 flex font-bold items-center ml-3 justify-start'>
                                     {item.text}
                                 </div>
                             </div>
@@ -196,7 +390,7 @@ const SideBar = () => {
             </div>
         </div>
         {  
-        ( selectedCategory === 'Model' ) &&
+            selectedCategory &&
             <div className='bg-white flex flex-shrink-0 w-98 h-screen flex-col'>
                 <div className='flex justify-between px-7 h-20 border-b border-blue-gray-200' >
                     <div className='text-lg font-medium text-blue-gray-900 flex justify-center items-center' >
@@ -208,9 +402,47 @@ const SideBar = () => {
                 </div>
                 <div className='flex-1 flex-col p-4 bg-slate-50 overflow-y-auto'>
                     {
-                        ModelCardInfo.map((item, index)=>(
-                            <ModelCard key={index} items={item}/>
-                        ))
+                        selectedCategory === 'Style' &&
+                            ModelCardInfo.map((item, index)=>(
+                                <ModelCard key={index} items={item}/>
+                            ))
+                    }
+                    {
+                        selectedCategory === 'Flooring & Interior' &&
+                        <>
+                            <div className='border-gray-500 border-b my-3 pb-1 text-base font-bold'>Flooring</div>
+                            {
+                                FlooringAndIneriorInfo.find(( s ) => s.style === currentSelectedModelStyle ).flooring.map((item, index) => (
+                                    <div key={index}>
+                                        <div className='py-2' >{item.type}</div>
+                                        <RadioButton items={item.options} setValue={setCurrnetFlooringOptions} defaultValue={item.options[0].value} />
+                                    </div>
+                                ))
+                            }
+                            {
+                                currentSelectedModelStyle !== 'ADU Series' &&
+                                <>
+                                    <div className='border-gray-500 border-b my-3 pb-1 text-base font-bold'>Interior</div>
+                                    <div>Interior options are not shown visually on the model but are included in the price estimate.</div>
+                                    {
+                                        FlooringAndIneriorInfo.find(( s ) => s.style === currentSelectedModelStyle ).interior.map((item, index) => (
+                                            <div key={index}>
+                                                <div className='py-3 font-bold' >{item.type}</div>
+                                                {
+                                                    item.options.optionsType === 'radio' ? 
+                                                    <RadioButton items={item.options.data} setValue={setCurrentInteriorOptions} defaultValue={item.options.data[0].value} />
+                                                    : (
+                                                        item.options.data.map((element, index)=>(
+                                                            <CheckboxButton key={index} item={element} setValue={setCurrentInteriorOptions} />
+                                                        ))
+                                                    )
+                                                }
+                                            </div>
+                                        ))
+                                    }
+                                </>
+                            }
+                        </>
                     }
                 </div>
             </div>
